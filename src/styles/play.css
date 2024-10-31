@@ -1,0 +1,126 @@
+body{
+    display: inline-block;
+}
+
+.questions{
+    border-left: 5px solid rgba(70, 70, 106, 0.615);
+    background-color: rgba(145, 85, 129, 0.516);
+    width: 80%;
+    margin: 0.2rem  auto 0  auto;
+    padding: 1rem;
+
+    h2{
+        text-align: center;
+        font-weight: lighter;
+        color: whitesmoke;
+        font-size: xx-large;
+        margin-bottom: 1rem;
+    }
+
+    .page-clock-hint-container  {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .clock-icon{
+        position: relative;
+        top: 4px;
+        color: rgb(98, 46, 115);
+    }
+
+    .page {
+        font-size: 1rem;
+        font-weight: bold;
+        color: rgb(98, 46, 115);
+    }
+
+    .hint-bulb{
+        position: relative;
+        color: rgb(98, 46, 115);
+        cursor: pointer;
+    }
+
+    .hint-bulb:hover {
+        color: violet;
+    }
+
+    .hint-number{
+        position: relative;
+        top: -3px;
+    }
+
+    
+
+    h5{
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        line-height: 1.5;
+        text-align: center;
+        color: whitesmoke;
+    }
+
+    .options-container{
+        display: inline-block;
+        width: 50%;
+    }
+
+    .option{
+        background-color: rgba(151, 75, 221, 0.642);
+        border-radius: 50px;
+        color: whitesmoke;
+        cursor: pointer;
+        margin: 1rem auto;
+        padding: 1.5rem;
+        transition: 0.3s linear all;
+        text-align: center;
+        width: 90%;
+    }
+
+    .option:hover {
+        background-color: rgb(86, 35, 113);
+    }
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0  auto 0.1rem  auto;
+    padding: 0.5rem;
+    width: 100%;
+}
+.button-container button {
+    border: none;
+    color: whitesmoke;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.button-container button:first-child {
+    background-color: rgba(151, 75, 221, 0.642);
+    transition: 0.3s linear all;
+}
+
+.button-container button:first-child:hover {
+    background-color: rgb(86, 35, 113);
+}
+
+.button-container button:nth-child(2) {
+    background-color: rgba(155, 68, 170, 0.642);
+    transition: 0.3s linear all;
+}
+
+.button-container button:nth-child(2):hover {
+    background-color: rgb(86, 35, 113);
+}
+
+.button-container button:nth-child(3) {
+    background-color: rgba(155, 68, 170, 0.642);
+    transition: 0.3s linear all;
+}
+
+.button-container button:nth-child(3):hover {
+    background-color: rgb(86, 35, 113);
+}

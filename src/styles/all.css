@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: "Quicksand", sans-serif;
+}
+
+.toast-invalid {
+    background-color: #983c5b;
+    border-radius: 5px;
+    color: whitesmoke; 
+    width: 99%;  
+    padding: 5px;
+    text-align: center;
+}
+.toast-valid {
+    background-color: rgb(150, 75, 221);
+    border-radius: 5px;
+    color: whitesmoke;   
+    width: 99%;
+    padding: 5px;
+    text-align: center;
+}
