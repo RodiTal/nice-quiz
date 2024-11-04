@@ -1,10 +1,15 @@
 import React, { Component, Fragment}  from 'react';
 import { FaClock, FaLightbulb } from "react-icons/fa6";
-import M from 'materialize-css';
+import { useNavigate } from 'react-router-dom';
 
+import M from 'materialize-css';
 import questions  from '../questions.json';
 import isEmpty from '../utils/isEmpty';
 
+const PlayWithNavigate = () => {
+    const navigate = useNavigate();
+    return <Play navigate={navigate} />;
+};
 
 class Play extends Component {
     constructor(props) {
@@ -20,12 +25,13 @@ class Play extends Component {
         currentQuestionIndex:  0,
         score:  0,
         correctAnswers:   0,
-        wrongtAnswers: 0,
+        wrongAnswers: 0,
         hints: 5,
         time: {}
         };
 
     }
+  
 
     componentDidMount () {
         const {questions, currentQuestion, nextQuestion, previousQuestion}  = this.state;
@@ -45,6 +51,7 @@ displayQuestions =  (questions = this.state.questions, currentQuestion, nextQues
             currentQuestion: currentQuestion,
             nextQuestion: nextQuestion,
             previousQuestion: previousQuestion,
+            numberOfQuestions: questions.length,
             answer: answer,
         });
     }
@@ -58,6 +65,50 @@ handleOptionClick  = (e) => {
     }
 }
 
+handleNextButtonClick = () => {
+    if  (this.state.nextQuestion !== undefined) {
+        this.setState(prevState => ({
+            currentQuestionIndex: prevState.currentQuestionIndex + 1
+        }), () => {
+            this.displayQuestions(this.state.questions, this.state.currentQuestion, this.state.nextQuestion, this.state.previousQuestion);
+        });
+    }
+};
+
+handlePreviousButtonClick = () => {
+    if  (this.state.previousQuestion !== undefined) {
+        this.setState(prevState => ({
+            currentQuestionIndex: prevState.currentQuestionIndex - 1
+        }), () => {
+            this.displayQuestions(this.state.questions, this.state.currentQuestion, this.state.nextQuestion, this.state.previousQuestion);
+        });
+    }
+};
+
+handleQuitButtonClick =  () => {
+    if(window.confirm('Are  you sure you want to quit?')) {
+        this.props.navigate('/');
+    }
+};
+
+handleButtonClick = (e) => {
+    switch (e.target.id) {
+        case 'next-button':
+            this.handleNextButtonClick();
+            break;
+        case  'previous-button':
+            this.handlePreviousButtonClick();
+            break;
+        case   'quit-button':
+            this.handleQuitButtonClick();
+            break;
+        default:
+         break;
+    }
+}
+
+
+
 correctAnswers =  () => {
     M.toast({html:  'Correct answer!', classes: 'toast-valid', displayLength:  2000});
     this.setState(prevState => ({
@@ -65,7 +116,9 @@ correctAnswers =  () => {
         correctAnswers: prevState.correctAnswers + 1,
         currentQuestionIndex: prevState.currentQuestionIndex + 1,
         numberOfAnsweredQuestions: prevState.numberOfAnsweredQuestions + 1,
-    }));
+    }), () => {
+        this.displayQuestions(this.state.questions, this.state.currentQuestion, this.state.nextQuestion, this.state.previousQuestion);
+    });
 }
 
 wrongAnswers =  () => {
@@ -73,16 +126,16 @@ wrongAnswers =  () => {
     M.toast({html:  'Wrong answer!', classes: 'toast-invalid', displayLength:  2000});
 
     this.setState(prevState => ({
-      wrongtAnswers:  prevState.wrongtAnswers + 1,
+      wrongAnswers:  prevState.wrongAnswers + 1,
       numberOfAnsweredQuestions: prevState.numberOfAnsweredQuestions + 1,
       currentQuestionIndex: prevState.currentQuestionIndex + 1,
-
-
-    }));
+    }), () => {
+        this.displayQuestions(this.state.questions, this.state.currentQuestion, this.state.nextQuestion, this.state);
+    });
 }
 
     render () {
-        const {currentQuestion}  = this.state;
+        const {currentQuestion, currentQuestionIndex, numberOfQuestions}  = this.state;
 
         return (
             <Fragment>
@@ -93,7 +146,7 @@ wrongAnswers =  () => {
                             2:15 <span className='clock-icon'><FaClock size={20}/></span>
                         </div>                        
                         <div className='page'>
-                            <span>1 of 15</span> 
+                            <span>{currentQuestionIndex + 1} of {numberOfQuestions}</span> 
                         </div>
                         <div className='hint'>
                             <p>
@@ -111,9 +164,10 @@ wrongAnswers =  () => {
                         <p onClick={this.handleOptionClick} className='option'>{currentQuestion.optionD}</p>                  
                     </div>
                     <div className='button-container'>
-                        <button>Previous</button>
-                        <button>Quit</button>
-                        <button>Next</button>
+                        <button id='previous-button' onClick={this.handleButtonClick}>Previous</button>
+                        <button id='quit-button' onClick={this.handleButtonClick}>Quit</button>
+                        <button id='next-button' onClick={this.handleButtonClick}>Next</button>
+
                     </div>
                 </div>
             </Fragment>
@@ -121,4 +175,4 @@ wrongAnswers =  () => {
     }
 
 }
-export default Play;
+export default PlayWithNavigate;
