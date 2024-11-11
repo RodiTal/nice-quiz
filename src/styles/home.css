@@ -8,7 +8,7 @@
     width: 100vw;
 
     section {
-        background-color: rgba(181, 120, 171, 0.3);
+        background-color: rgba(117, 113, 117, 0.324);
         padding-left: 2rem;
         padding-right: 2rem;
         border-radius: 10px;
@@ -46,7 +46,7 @@
     }
 
     a.play-btn{
-        background-color: rgb(216, 157, 202);
+        background-color: rgb(176, 113, 162);
         color: white;
         display: block;
         border-radius: 30px;

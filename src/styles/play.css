@@ -3,8 +3,8 @@ body{
 }
 
 .questions{
-    border-left: 5px solid rgba(70, 70, 106, 0.615);
-    background-color: rgba(145, 85, 129, 0.516);
+    border-left: 5px solid gray;
+    background-color: rgba(117, 113, 117, 0.324);
     width: 80%;
     margin: 0.2rem  auto 0  auto;
     padding: 1rem;

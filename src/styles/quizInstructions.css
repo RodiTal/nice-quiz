@@ -9,7 +9,7 @@ body {
 }
 
 .instruction-container {
-    background-color: rgba(118, 83, 124, 0.333);
+    background-color: rgba(117, 113, 117, 0.324);
     border-radius: 5px;
     margin-top: 0rem;
     margin-bottom: 1rem;
@@ -31,7 +31,7 @@ body {
 
     .hint-icon{
         position: relative;
-        color: rgb(91, 0, 91);
+        color: rgb(42, 41, 42);
         cursor: pointer;
     }
 
@@ -41,15 +41,16 @@ body {
         margin-bottom: 10px;
         margin-left: 50%;
         transform: translateX(-50%);
-        background-color: rgba(144, 82, 161, 0.308);
+        background-color: rgba(82, 81, 82, 0.324);
         height: 100%;
         width: 80%;
         border-radius: 10px;
+        border-left: 5px solid gray;
     }
 
     ul li {
         font-size: 18px;
-        color: whitesmoke;
+        color: rgb(0, 0, 0);
     }
 
     .btns{
@@ -60,21 +61,22 @@ body {
     a {
         text-decoration: none;
         font-weight: bold;
-        color: whitesmoke;
+        color: rgb(0, 0, 0);
     }
 
     .left, .right{
-        background-color: rgb(192, 115, 146);
-        padding: 2px;
-        border-radius: 20px;
+        background-color: rgba(117, 113, 117, 0.324);
+        padding: 10px;
+        border-radius: 15px;
+        border-left: 5px solid gray;
     }
 
     .left:hover{
-        background-color: rgb(157, 112, 127);
+        background-color: rgba(66, 66, 66, 0.324);
     }
     
     .right:hover{
-        background-color: rgb(157, 112, 127);
+        background-color: rgba(66, 66, 66, 0.324);
     }
 }
 

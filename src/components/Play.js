@@ -29,13 +29,14 @@ class Play extends Component {
         hints: 5,
         time: {}
         };
-
+        this.interval = null
     }
   
 
     componentDidMount () {
         const {questions, currentQuestion, nextQuestion, previousQuestion}  = this.state;
         this.displayQuestions(questions, currentQuestion,  nextQuestion, previousQuestion);
+        this.setTimer();
     }
 
 
@@ -134,8 +135,41 @@ wrongAnswers =  () => {
     });
 }
 
+    setTimer = () => {
+        const coutDownTime = Date.now() + 900000;
+        this.interval = setInterval(() => {
+            const now = new Date();
+            const distance = coutDownTime - now;
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) /  (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if  (distance < 0) {clearInterval(this.interval);
+                this.setState({
+                    time: {
+                        minutes: 0,
+                        seconds: 0
+                    }
+                 }, () => {
+                    alert('Time is up!');
+                    this.props.navigate('/')
+
+                 });
+                } else {
+                    this.setState({
+                        time:{
+                            minutes: minutes,
+                            seconds: seconds
+                        }
+                 });
+             }
+        }, 1000);
+    }
+
     render () {
-        const {currentQuestion, currentQuestionIndex, numberOfQuestions}  = this.state;
+        const {currentQuestion,
+             currentQuestionIndex, 
+             numberOfQuestions,
+             time
+            }  = this.state;
 
         return (
             <Fragment>
@@ -143,7 +177,7 @@ wrongAnswers =  () => {
                     <h2>Quiz Mode</h2>
                     <div className='page-clock-hint-container'>
                         <div className='clock'>                          
-                            2:15 <span className='clock-icon'><FaClock size={20}/></span>
+                            {time.minutes}:{time.seconds} <span className='clock-icon'><FaClock size={20}/></span>
                         </div>                        
                         <div className='page'>
                             <span>{currentQuestionIndex + 1} of {numberOfQuestions}</span> 
@@ -173,6 +207,6 @@ wrongAnswers =  () => {
             </Fragment>
         );
     }
-
 }
+
 export default PlayWithNavigate;
