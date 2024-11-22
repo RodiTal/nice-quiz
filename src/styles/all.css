@@ -8,18 +8,27 @@ body{
 }
 
 .toast-invalid {
-    background-color: #983c5b;
+    background-color: #ac4549a6;
     border-radius: 5px;
     color: whitesmoke; 
-    width: 99%;  
-    padding: 5px;
+    width: 98%;  
+    padding: 11px;
     text-align: center;
 }
 .toast-valid {
-    background-color: rgb(150, 75, 221);
+    background-color: rgba(67, 170, 115, 0.715);
     border-radius: 5px;
     color: whitesmoke;   
-    width: 99%;
-    padding: 5px;
+    width: 98%;
+    padding: 11px;
     text-align: center;
+}
+
+button.disabled,
+button:disabled {
+    background-color: #d3d3d3 !important; 
+    color: #a0a0a0 !important;           
+    cursor: not-allowed;      
+    border: 1px solid #ccc !important;  
+    opacity: 0.9 !important;            
 }

@@ -27,6 +27,8 @@ class Play extends Component {
         correctAnswers:   0,
         wrongAnswers: 0,
         hints: 5,
+        nextButtonDisabled: false,
+        previousButtonDisabled: true,
         time: {}
         };
         this.interval = null
@@ -37,6 +39,10 @@ class Play extends Component {
         const {questions, currentQuestion, nextQuestion, previousQuestion}  = this.state;
         this.displayQuestions(questions, currentQuestion,  nextQuestion, previousQuestion);
         this.setTimer();
+    }
+
+    componentWillUnmount () {
+        clearInterval(this.interval);
     }
 
 
@@ -54,6 +60,8 @@ displayQuestions =  (questions = this.state.questions, currentQuestion, nextQues
             previousQuestion: previousQuestion,
             numberOfQuestions: questions.length,
             answer: answer,
+        }, () => {
+            this.handleDisableButton();
         });
     }
 };
@@ -118,20 +126,32 @@ correctAnswers =  () => {
         currentQuestionIndex: prevState.currentQuestionIndex + 1,
         numberOfAnsweredQuestions: prevState.numberOfAnsweredQuestions + 1,
     }), () => {
-        this.displayQuestions(this.state.questions, this.state.currentQuestion, this.state.nextQuestion, this.state.previousQuestion);
-    });
+        if (this.state.nextQuestion === undefined) {
+            this.endGame();
+        } else {
+            this.displayQuestions(this.state.questions, this.state.currentQuestion, this.state.nextQuestion, this.state);
+        }   
+     });
 }
 
 wrongAnswers =  () => {
     navigator.vibrate(1000);
-    M.toast({html:  'Wrong answer!', classes: 'toast-invalid', displayLength:  2000});
+    M.toast({
+        html:  'Wrong answer!', 
+        classes: 'toast-invalid', 
+        displayLength:  2000
+    });
 
     this.setState(prevState => ({
       wrongAnswers:  prevState.wrongAnswers + 1,
       numberOfAnsweredQuestions: prevState.numberOfAnsweredQuestions + 1,
       currentQuestionIndex: prevState.currentQuestionIndex + 1,
     }), () => {
-        this.displayQuestions(this.state.questions, this.state.currentQuestion, this.state.nextQuestion, this.state);
+        if (this.state.nextQuestion === undefined) {
+            this.endGame();
+        } else {
+            this.displayQuestions(this.state.questions, this.state.currentQuestion, this.state.nextQuestion, this.state);
+        }
     });
 }
 
@@ -149,9 +169,7 @@ wrongAnswers =  () => {
                         seconds: 0
                     }
                  }, () => {
-                    alert('Time is up!');
-                    this.props.navigate('/')
-
+                    this.endGame();
                  });
                 } else {
                     this.setState({
@@ -163,6 +181,45 @@ wrongAnswers =  () => {
              }
         }, 1000);
     }
+
+    handleDisableButton = () => {
+        if (this.state.previousQuestion === undefined || this.state.currentQuestionIndex <= 0) {
+            this.setState({
+                previousButtonDisabled: true
+            });
+        } else {
+            this.setState({
+                previousButtonDisabled: false
+            });
+        }
+
+        if (this.state.nextQuestion === undefined || this.state.currentQuestionIndex +1 ===  this.state.questions.length) {
+            this.setState({
+                nextButtonDisabled: true
+            });
+        } else {
+            this.setState({
+                nextButtonDisabled: false
+            });
+        }
+    }
+
+    endGame  = () => {
+        alert('Quiz  finished!');
+        const {state}  = this;
+        const playerStats = {
+            scor: state.score,
+            numberOfQuestions: state.questions,
+            numberOfAnsweredQuestions: state.answeredQuestions,
+            correctAnswers: state.correctAnswers,
+            wrongAnswers: state.wrongAnswers,    
+        };
+        console.log(playerStats);
+        setTimeout(() => {
+            this.props.navigate('/');
+        }, 3000);
+    }
+
 
     render () {
         const {currentQuestion,
@@ -198,9 +255,19 @@ wrongAnswers =  () => {
                         <p onClick={this.handleOptionClick} className='option'>{currentQuestion.optionD}</p>                  
                     </div>
                     <div className='button-container'>
-                        <button id='previous-button' onClick={this.handleButtonClick}>Previous</button>
+                        <button 
+                            className = {`button ${this.state.previousButtonDisabled ? 'disabled': ''}`} 
+                            id='previous-button' 
+                            onClick={this.handleButtonClick}>
+                            Previous
+                        </button>
                         <button id='quit-button' onClick={this.handleButtonClick}>Quit</button>
-                        <button id='next-button' onClick={this.handleButtonClick}>Next</button>
+                        <button 
+                            className = {`button ${this.state.nextButtonDisabled ? 'disabled': ''}`}        
+                            id='next-button' 
+                            onClick={this.handleButtonClick}>
+                            Next
+                        </button>
 
                     </div>
                 </div>

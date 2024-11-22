@@ -27,23 +27,23 @@ body{
     .clock-icon{
         position: relative;
         top: 4px;
-        color: rgb(98, 46, 115);
+        color: rgb(73, 73, 73);
     }
 
     .page {
         font-size: 1rem;
         font-weight: bold;
-        color: rgb(98, 46, 115);
+        color: rgb(73, 73, 73);
     }
 
     .hint-bulb{
         position: relative;
-        color: rgb(98, 46, 115);
+        color: rgb(73, 73, 73);
         cursor: pointer;
     }
 
     .hint-bulb:hover {
-        color: violet;
+        color: rgb(3, 3, 3);
     }
 
     .hint-number{
@@ -68,7 +68,7 @@ body{
     }
 
     .option{
-        background-color: rgba(151, 75, 221, 0.642);
+        background-color: rgba(76, 76, 76, 0.447);
         border-radius: 50px;
         color: whitesmoke;
         cursor: pointer;
@@ -80,7 +80,7 @@ body{
     }
 
     .option:hover {
-        background-color: rgb(86, 35, 113);
+        background-color: rgba(64, 64, 64, 0.753);
     }
 }
 
@@ -91,36 +91,37 @@ body{
     padding: 0.5rem;
     width: 100%;
 }
-.button-container button {
+.button-container button { 
     border: none;
     color: whitesmoke;
     cursor: pointer;
     padding: 1rem;
+    border-radius: 15px;
 }
 
 .button-container button:first-child {
-    background-color: rgba(151, 75, 221, 0.642);
+    background-color: rgba(76, 76, 76, 0.447);
     transition: 0.3s linear all;
 }
 
 .button-container button:first-child:hover {
-    background-color: rgb(86, 35, 113);
+    background-color: rgba(64, 64, 64, 0.753);
 }
 
 .button-container button:nth-child(2) {
-    background-color: rgba(155, 68, 170, 0.642);
+    background-color: rgba(76, 76, 76, 0.447);
     transition: 0.3s linear all;
 }
 
 .button-container button:nth-child(2):hover {
-    background-color: rgb(86, 35, 113);
+    background-color: rgba(64, 64, 64, 0.753);
 }
 
 .button-container button:nth-child(3) {
-    background-color: rgba(155, 68, 170, 0.642);
+    background-color: rgba(76, 76, 76, 0.447);
     transition: 0.3s linear all;
 }
 
 .button-container button:nth-child(3):hover {
-    background-color: rgb(86, 35, 113);
+    background-color: rgba(64, 64, 64, 0.753);
 }
