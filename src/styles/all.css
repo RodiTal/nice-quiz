@@ -8,7 +8,7 @@ body{
 }
 
 .toast-invalid {
-    background-color: #ac4549a6;
+    background-color: rgba(206, 85, 113);
     border-radius: 5px;
     color: whitesmoke; 
     width: 98%;  
@@ -16,7 +16,7 @@ body{
     text-align: center;
 }
 .toast-valid {
-    background-color: rgba(67, 170, 115, 0.715);
+    background-color: rgba(191, 222, 129);;
     border-radius: 5px;
     color: whitesmoke;   
     width: 98%;

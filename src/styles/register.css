@@ -1,0 +1,115 @@
+/* General form styling */
+section {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-left: 5px solid #767676;
+    border-radius: 15px;
+    background-color: rgba(120, 86, 117, 0.447);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px 4px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    padding: 10px 15px;
+    background-color: rgb(191, 222, 129);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: rgba(119, 175, 45, 0.818);
+}
+
+/* Icons for validation */
+.valid {
+    color: #28a745; /* Green */
+    margin-left: 10px;
+}
+
+.invalid {
+    color: #dc3545; /* Red */
+    margin-left: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+/* Error messages */
+.errmsg {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Instruction tooltips */
+.instructions {
+    font-size: 12px;
+    color: #6c757d; /* Grey */
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.instructions svg {
+    margin-right: 5px;
+    vertical-align: middle;
+}

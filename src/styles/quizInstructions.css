@@ -41,7 +41,7 @@ body {
         margin-bottom: 10px;
         margin-left: 50%;
         transform: translateX(-50%);
-        background-color: rgba(82, 81, 82, 0.324);
+        background-color: rgba(120, 86, 117, 0.447);
         height: 100%;
         width: 80%;
         border-radius: 10px;
@@ -50,7 +50,7 @@ body {
 
     ul li {
         font-size: 18px;
-        color: rgb(0, 0, 0);
+        color: black
     }
 
     .btns{
@@ -65,18 +65,17 @@ body {
     }
 
     .left, .right{
-        background-color: rgba(117, 113, 117, 0.324);
+        background-color: rgb(191, 222, 129);
         padding: 10px;
         border-radius: 15px;
-        border-left: 5px solid gray;
     }
 
     .left:hover{
-        background-color: rgba(66, 66, 66, 0.324);
+        background-color: rgba(119, 175, 45, 0.818);
     }
     
     .right:hover{
-        background-color: rgba(66, 66, 66, 0.324);
+        background-color: rgba(119, 175, 45, 0.818);
     }
 }
 

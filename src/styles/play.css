@@ -27,7 +27,7 @@ body{
     .clock-icon{
         position: relative;
         top: 4px;
-        color: rgb(73, 73, 73);
+        color: rgba(120, 86, 117, 0.447);
     }
 
     .page {
@@ -38,12 +38,12 @@ body{
 
     .hint-bulb{
         position: relative;
-        color: rgb(73, 73, 73);
+        color: rgba(120, 86, 117, 0.447);
         cursor: pointer;
     }
 
     .hint-bulb:hover {
-        color: rgb(3, 3, 3);
+        color: rgba(120, 86, 117);
     }
 
     .hint-number{
@@ -68,7 +68,7 @@ body{
     }
 
     .option{
-        background-color: rgba(76, 76, 76, 0.447);
+        background-color: rgba(120, 86, 117, 0.447);
         border-radius: 50px;
         color: whitesmoke;
         cursor: pointer;
@@ -80,7 +80,7 @@ body{
     }
 
     .option:hover {
-        background-color: rgba(64, 64, 64, 0.753);
+        background-color: rgba(120, 86, 117, 0.815);
     }
 }
 
@@ -100,28 +100,28 @@ body{
 }
 
 .button-container button:first-child {
-    background-color: rgba(76, 76, 76, 0.447);
+    background-color: rgb(191, 222, 129);
     transition: 0.3s linear all;
 }
 
 .button-container button:first-child:hover {
-    background-color: rgba(64, 64, 64, 0.753);
+    background-color: rgba(119, 175, 45, 0.818);
 }
 
 .button-container button:nth-child(2) {
-    background-color: rgba(76, 76, 76, 0.447);
+    background-color: rgb(206, 85, 113);
     transition: 0.3s linear all;
 }
 
 .button-container button:nth-child(2):hover {
-    background-color: rgba(64, 64, 64, 0.753);
+    background-color: rgb(171, 39, 76);
 }
 
 .button-container button:nth-child(3) {
-    background-color: rgba(76, 76, 76, 0.447);
+    background-color: rgb(191, 222, 129);
     transition: 0.3s linear all;
 }
 
 .button-container button:nth-child(3):hover {
-    background-color: rgba(64, 64, 64, 0.753);
+    background-color: rgba(119, 175, 45, 0.818);
 }

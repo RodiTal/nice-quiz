@@ -209,14 +209,15 @@ wrongAnswers =  () => {
         const {state}  = this;
         const playerStats = {
             scor: state.score,
-            numberOfQuestions: state.questions,
-            numberOfAnsweredQuestions: state.answeredQuestions,
+            numberOfQuestions: state.numberOfQuestions,
+            numberOfAnsweredQuestions: state.numberOfAnsweredQuestions,
             correctAnswers: state.correctAnswers,
-            wrongAnswers: state.wrongAnswers,    
+            wrongAnswers: state.wrongAnswers,  
+            usedHints: 5 - state.hints
         };
         console.log(playerStats);
         setTimeout(() => {
-            this.props.navigate('/');
+            this.props.navigate('/quiz-summary', playerStats);
         }, 3000);
     }
 
