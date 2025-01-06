@@ -1,7 +1,7 @@
 /* General form styling */
 section {
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
     margin: 50px auto;
     padding: 20px;
     border-left: 5px solid #767676;
@@ -112,4 +112,42 @@ button:hover:not(:disabled) {
 .instructions svg {
     margin-right: 5px;
     vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 15px;  
+        margin: 20px auto; 
+        max-width: 90%;  
+    }
+
+    h1 {
+        font-size: 1.8rem; 
+    }
+
+    form {
+        gap: 10px; 
+    }
+
+    label {
+        font-size: 12px; 
+    }
+
+    input {
+        font-size: 13px; 
+    }
+
+    button {
+        padding: 8px 12px; 
+        font-size: 13px; 
+    }
+
+    .errmsg {
+        font-size: 12px; 
+    }
+
+    .instructions {
+        font-size: 10px; 
+        padding: 8px; 
+    }
 }

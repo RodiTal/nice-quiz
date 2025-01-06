@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { useNavigate,  useLocation } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -9,6 +9,7 @@ const QuizSummaryWithNavigate = () => {
     const location = useLocation();
     return <QuizSummary navigate={navigate} location={location} />;
 };
+
 
 
 
@@ -24,53 +25,77 @@ class QuizSummary  extends Component {
         };
     }
 
-componentDidMount() {
-    const { state } =  this.props.location;
-    if (state) {
+    componentDidMount() {
+        const { state } = this.props.location;
+        if (state) {
+            const score = (state.score / state.numberOfQuestions) * 100;
+            let remark = '';
+            if (score <= 30) remark = 'Poor';
+            else if (score <= 50) remark = 'Average';
+            else if (score <= 70) remark = 'Good';
+            else if (score <= 90) remark = 'Excellent';
+            else remark = 'Outstanding';
+
             this.setState({
-                score: (state.score / state.numberOfQuestions) * 100,
+                score,
                 numberOfQuestions: state.numberOfQuestions,
                 correctAnswers: state.correctAnswers,
                 wrongAnswers: state.wrongAnswers,
-                usedHints: state.usedHints
+                usedHints: state.usedHints,
+                remark,
             });
         }
-}
+    }
 
     render() {
-        const { state, score } = this.props.location;
-        let stats, remark
-        if(score <= 30) {
-            remark = 'Poor';
-            }
-            else if(score <= 50) {
-                remark = 'Average';
-                }
-                else if(score <= 70) {
-                    remark = 'Good';
-                    }
-                    else if(score <= 90) {
-                        remark = 'Excellent';
-                        } else {
-                            remark = 'Outstanding';
-                        }
+        const { state } = this.props.location;
+        const { score, numberOfQuestions, correctAnswers, wrongAnswers, usedHints, remark } = this.state;
 
-        if(state !==  undefined) {
-            stats = (<h1>stats are available</h1>);
+        let content;
+        if (state) {
+            content = (
+                <Fragment>
+                    <h1>Quiz Summary</h1>
+                    <p>Score: {score.toFixed(2)}%</p>
+                    <p>Number of Questions: {numberOfQuestions}</p>
+                    <p>Correct Answers: {correctAnswers}</p>
+                    <p>Wrong Answers: {wrongAnswers}</p>
+                    <p>Hints Used: {usedHints}</p>
+                    <p>Performance Remark: <strong>{remark}</strong></p>
+                    <section>
+                        <ul>
+                            <li>
+                                <Link to="/">Back to Home</Link>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <Link to="/play">Play again</Link>
+                            </li>
+                        </ul>
+                    </section>
+                </Fragment>
+            );
         } else {
-            stats = (<h1>No stats available, please take the quiz first</h1>);
-        }
-
-        return (
-           <Fragment>
-                {stats}
-           </Fragment>
+            content = (
+                <section>     
+                    <h1 className='no-stats'>No stats available, please take the quiz first</h1>
+                        <ul>
+                            <li>
+                                <Link to="/">Back to Home</Link>
+                            </li>
+                        </ul>
+                        <ul>
+                             <li>
+                                <Link to="/play">Take the quiz</Link>
+                            </li>
+                        </ul>
+            
+        
+        </section>
         );
+     }
+        return <div className='summary'>{content}</div>;
     }
 }
-
-
-export default  QuizSummaryWithNavigate;
-
-
-
+export default QuizSummaryWithNavigate;

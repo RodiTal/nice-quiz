@@ -216,9 +216,8 @@ wrongAnswers =  () => {
             usedHints: 5 - state.hints
         };
         console.log(playerStats);
-        setTimeout(() => {
-            this.props.navigate('/quiz-summary', playerStats);
-        }, 3000);
+        this.props.navigate('/quiz-summary', { state: playerStats });
+
     }
 
 

@@ -49,6 +49,9 @@ body{
     .hint-number{
         position: relative;
         top: -3px;
+        font-size: 15px;
+        font-weight: bold;
+        color: rgb(73, 73, 73);
     }
 
     
@@ -124,4 +127,33 @@ body{
 
 .button-container button:nth-child(3):hover {
     background-color: rgba(119, 175, 45, 0.818);
+}
+
+
+
+@media (max-width: 768px) {
+    .questions {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .options-container {
+        width: 100%;
+    }
+
+    .option {
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 1rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .button-container button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
